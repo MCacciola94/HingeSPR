@@ -99,6 +99,7 @@ if checkpoint.ok:
         # t.model = t.model_teacher
         # t.test()
         while current_ratio - args.ratio > args.stop_limit and not t.terminate(): # either change the stop condition here or change the nullifying threshold
+            print("Searchin epoch")
             t.train()
             t.test()
             calc_model_complexity_running(my_model, merge_flag)
@@ -132,6 +133,7 @@ if checkpoint.ok:
     # ==================================================================================================================
 
     while not t.terminate():
+        print("Finetuning epoch")
         # if t.scheduler.last_epoch == 0 and not args.test_only:
         #     t.test()
         # if t.scheduler.last_epoch + 1 == 2:

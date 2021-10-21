@@ -226,6 +226,8 @@ class Hinge(ResNet):
             self.running_grad_ratio = min(max(self.running_grad_ratio, torch.tensor(5/9, device=device)), torch.tensor(9/5, device=device))
 
     def proximal_operator(self, lr, batch, regularization):
+        #print("no proximal operator in use")
+        return 0
         modules = self.find_modules()
         for l in range(len(modules)):
             param1, param2 = self.sparse_param(modules[l])

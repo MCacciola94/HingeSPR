@@ -68,7 +68,7 @@ class Trainer():
             lossp = self.model.get_model().compute_loss(batch + 1, epoch, self.converging)
             if not self.converging:
                 # use projection loss for SGD and don't use it for PG
-                if self.args.optimizer == 'SGD':
+                if self.args.optimizer == 'SGD' or self.args.optimizer == 'PG':
                     loss = loss + sum(lossp)
             else:
                 # use distillation loss
